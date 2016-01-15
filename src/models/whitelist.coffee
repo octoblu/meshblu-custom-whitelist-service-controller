@@ -1,16 +1,20 @@
 _           = require 'lodash'
 MeshbluHttp = require 'meshblu-http'
-debug       = require('debug')('custom-whitelist-service-controller:whitelist')
+debug       = require('debug')('meshblu-rpc:whitelist')
+
 class Whitelist
   constructor: ({meshbluConfig, whitelistName}) ->
     @meshbluHttp = new MeshbluHttp meshbluConfig
     @whitelistPath = "customWhitelists.#{[whitelistName]}"
 
   checkWhitelist: ({fromUuid, toUuid}, callback) =>
+    debug "checkWhitelist", {fromUuid, toUuid}
+
     return callback(null, false) unless fromUuid? && toUuid?
     return callback(null, true) if fromUuid == toUuid
 
     @meshbluHttp.device toUuid, (error, toDevice) =>
+      debug "toDevice:", JSON.stringify toDevice, null, 2
       return callback(error) if error?
       whitelist = _.get toDevice, @whitelistPath
 
