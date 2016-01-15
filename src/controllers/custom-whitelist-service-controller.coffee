@@ -16,9 +16,10 @@ class CustomWhitelistServiceController
 
     whitelist.checkWhitelist {fromUuid, toUuid}, (error, allowed) =>
       return response.status(error.code || 500).send(error.message) if error?
-
+      return response.sendStatus(403) unless allowed
+      
       @service[metadata.type] data, meshbluConfig, (error, responseData) =>
         return response.status(error.code || 500).send(error.message) if error?
-        response.status(200).send(responseData)
+        response.status(200).send(data: responseData)
 
 module.exports = CustomWhitelistServiceController
