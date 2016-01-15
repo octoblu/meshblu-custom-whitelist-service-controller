@@ -7,7 +7,6 @@ class Whitelist
     @whitelistPath = "customWhitelists.#{[whitelistName]}"
 
   checkWhitelist: ({fromUuid, toUuid}, callback) =>
-
     return callback(null, false) unless fromUuid? && toUuid?
     return callback(null, true) if fromUuid == toUuid
 
