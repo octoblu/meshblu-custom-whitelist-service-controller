@@ -65,7 +65,7 @@ describe 'Hello', ->
           json:
             fromUuid: 'someone-who-can-actionYo'
             metadata:
-              type: 'actionYo'
+              action: 'actionYo'
             data:
               yo: 'mama'
 
@@ -95,7 +95,7 @@ describe 'Hello', ->
           json:
             fromUuid: 'someone-who-can-actionYo'
             metadata:
-              type: 'stealMoney'
+              action: 'stealMoney'
             data:
               yo: 'mama'
 
@@ -115,7 +115,7 @@ describe 'Hello', ->
           json:
             fromUuid: 'someone-who-cant-actionYo'
             metadata:
-              type: 'actionYo'
+              action: 'actionYo'
 
         request.post options, (error, @response, @body) => done error
 
@@ -133,7 +133,7 @@ describe 'Hello', ->
           json:
             fromUuid: 'someone-who-cant-actionYo'
             metadata:
-              type: 'checkTemp'
+              action: 'checkTemp'
 
         request.post options, (error, @response, @body) => done error
 
@@ -151,7 +151,7 @@ describe 'Hello', ->
           json:
             fromUuid: 'receiver-uuid'
             metadata:
-              type: 'spendMoney'
+              action: 'spendMoney'
 
         request.post options, (error, @response, @body) => done error
 

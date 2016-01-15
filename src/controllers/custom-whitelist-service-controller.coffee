@@ -6,19 +6,20 @@ class CustomWhitelistServiceController
   message: (request, response) =>
     {metadata, data} = request.body
     meshbluConfig = request.meshbluAuth
-
-    {fromUuid} = request.body
     toUuid = request.meshbluAuth.uuid
+    {fromUuid} = request.body || toUuid
+    
+    action = metadata?.action
+    return response.sendStatus 422 unless action?
+    return response.sendStatus 422 unless @service[action]?
 
-    return response.sendStatus 422 unless @service[metadata?.type]?
-
-    whitelist = new Whitelist {whitelistName: metadata.type, meshbluConfig}
+    whitelist = new Whitelist {whitelistName: action, meshbluConfig}
 
     whitelist.checkWhitelist {fromUuid, toUuid}, (error, allowed) =>
       return response.status(error.code || 500).send(error.message) if error?
       return response.sendStatus(403) unless allowed
-      
-      @service[metadata.type] data, meshbluConfig, (error, responseData) =>
+
+      @service[action] data, meshbluConfig, (error, responseData) =>
         return response.status(error.code || 500).send(error.message) if error?
         response.status(200).send(data: responseData)
 
