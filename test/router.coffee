@@ -1,4 +1,4 @@
-MeshbluRpcController = require '../src/controllers/meshblu-rpc-controller'
+MeshbluRpcController = require '..'
 
 class Router
   constructor: ({@service}) ->
