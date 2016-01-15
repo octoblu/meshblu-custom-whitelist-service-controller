@@ -3,7 +3,7 @@ request = require 'request'
 shmock  = require '@octoblu/shmock'
 Server  = require '../server'
 
-describe 'Hello', ->
+describe 'MeshbluRpcController', ->
   beforeEach (done) ->
     @meshblu = shmock 0xd00d
 
@@ -33,7 +33,7 @@ describe 'Hello', ->
   afterEach (done) ->
     @meshblu.close done
 
-  describe 'POST /message', ->
+  describe 'POST /meshblu-rpc', ->
     beforeEach ->
       @receiverDevice =
         uuid: 'receiver-uuid'
@@ -57,7 +57,7 @@ describe 'Hello', ->
     describe 'when the method exists on the service', ->
       beforeEach (done) ->
         options =
-          uri: '/message'
+          uri: '/meshblu-rpc'
           baseUrl: "http://localhost:#{@serverPort}"
           auth:
             username: 'receiver-uuid'
@@ -87,7 +87,7 @@ describe 'Hello', ->
     describe 'when the method doesn\'t on the service', ->
       beforeEach (done) ->
         options =
-          uri: '/message'
+          uri: '/meshblu-rpc'
           baseUrl: "http://localhost:#{@serverPort}"
           auth:
             username: 'receiver-uuid'
@@ -107,7 +107,7 @@ describe 'Hello', ->
     describe 'when the method exists on the service, but the user isn\'t in the custom whitelist', ->
       beforeEach (done) ->
         options =
-          uri: '/message'
+          uri: '/meshblu-rpc'
           baseUrl: "http://localhost:#{@serverPort}"
           auth:
             username: 'receiver-uuid'
@@ -125,7 +125,7 @@ describe 'Hello', ->
     describe 'when the method exists on the service, and the whitelist contains a *', ->
       beforeEach (done) ->
         options =
-          uri: '/message'
+          uri: '/meshblu-rpc'
           baseUrl: "http://localhost:#{@serverPort}"
           auth:
             username: 'receiver-uuid'
@@ -143,7 +143,7 @@ describe 'Hello', ->
     describe 'when the method exists on the service, and there is no whitelist, but you are yourself', ->
       beforeEach (done) ->
         options =
-          uri: '/message'
+          uri: '/meshblu-rpc'
           baseUrl: "http://localhost:#{@serverPort}"
           auth:
             username: 'receiver-uuid'

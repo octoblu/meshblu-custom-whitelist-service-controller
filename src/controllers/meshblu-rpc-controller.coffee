@@ -1,6 +1,6 @@
 Whitelist = require '../models/whitelist'
 
-class CustomWhitelistServiceController
+class MeshbluRpcController
   constructor: ({@meshbluConfig, @service}) ->
 
   message: (request, response) =>
@@ -8,7 +8,7 @@ class CustomWhitelistServiceController
     meshbluConfig = request.meshbluAuth
     toUuid = request.meshbluAuth.uuid
     {fromUuid} = request.body || toUuid
-    
+
     action = metadata?.action
     return response.sendStatus 422 unless action?
     return response.sendStatus 422 unless @service[action]?
@@ -23,4 +23,4 @@ class CustomWhitelistServiceController
         return response.status(error.code || 500).send(error.message) if error?
         response.status(200).send(data: responseData)
 
-module.exports = CustomWhitelistServiceController
+module.exports = MeshbluRpcController

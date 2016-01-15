@@ -1,10 +1,10 @@
 {
-  "name": "meshblu-custom-whitelist-service-controller",
-  "version": "1.0.3",
+  "name": "meshblu-rpc-controller",
+  "version": "2.0.1",
   "description": "Put some description here",
   "keywords": [],
-  "homepage": "https://github.com/sqrtofsaturn/meshblu-custom-whitelist-service-controll",
-  "bugs": "https://github.com/sqrtofsaturn/meshblu-custom-whitelist-service-controll/issues",
+  "homepage": "https://github.com/sqrtofsaturn/meshblu-rpc-controller",
+  "bugs": "https://github.com/sqrtofsaturn/meshblu-rpc-controller/issues",
   "author": {
     "name": "Square Root of Saturn",
     "url": "https://github.com/sqrtofsaturn"
@@ -12,7 +12,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sqrtofsaturn/meshblu-custom-whitelist-service-controll.git"
+    "url": "https://github.com/sqrtofsaturn/meshblu-rpc-controller.git"
   },
   "scripts": {
     "start": "node command.js",
