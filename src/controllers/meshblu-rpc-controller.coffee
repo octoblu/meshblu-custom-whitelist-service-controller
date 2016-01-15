@@ -2,7 +2,7 @@ Whitelist = require '../models/whitelist'
 debug     = require('debug')('meshblu-rpc:controller')
 
 class MeshbluRpcController
-  constructor: (@service}) ->
+  constructor: ({@service}) ->
 
   message: (request, response) =>
     {metadata, data} = request.body
