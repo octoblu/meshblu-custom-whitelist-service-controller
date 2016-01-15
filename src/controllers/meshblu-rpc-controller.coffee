@@ -2,7 +2,7 @@ Whitelist = require '../models/whitelist'
 debug     = require('debug')('meshblu-rpc:controller')
 
 class MeshbluRpcController
-  constructor: ({@meshbluConfig, @service}) ->
+  constructor: (@service}) ->
 
   message: (request, response) =>
     {metadata, data} = request.body
@@ -21,7 +21,6 @@ class MeshbluRpcController
 
     whitelist.checkWhitelist {fromUuid, toUuid}, (error, allowed) =>
       return response.status(error.code || 500).send(error.message) if error?
-      debug {allowed}
       return response.sendStatus(403) unless allowed
       @service[action] data, meshbluConfig, (error, responseData) =>
         return response.status(error.code || 500).send(error.message) if error?
