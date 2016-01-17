@@ -5,6 +5,13 @@ class MeshbluRpcController
   constructor: ({@service}) ->
 
   message: (request, response) =>
+    # job =
+    #     metadata:
+    #       auth: @auth
+    #       toUuid: @auth.uuid
+    #       jobType: 'SearchDevices'
+    #     data:
+    #       type: 'bug'
     {metadata, data} = request.body
     meshbluConfig = request.meshbluAuth
     toUuid = request.meshbluAuth.uuid
