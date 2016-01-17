@@ -65,7 +65,7 @@ describe 'MeshbluRpcController', ->
           json:
             fromUuid: 'someone-who-can-actionYo'
             metadata:
-              action: 'actionYo'
+              jobType: 'actionYo'
             data:
               yo: 'mama'
 
@@ -95,7 +95,7 @@ describe 'MeshbluRpcController', ->
           json:
             fromUuid: 'someone-who-can-actionYo'
             metadata:
-              action: 'stealMoney'
+              jobType: 'stealMoney'
             data:
               yo: 'mama'
 
@@ -115,7 +115,7 @@ describe 'MeshbluRpcController', ->
           json:
             fromUuid: 'someone-who-cant-actionYo'
             metadata:
-              action: 'actionYo'
+              jobType: 'actionYo'
 
         request.post options, (error, @response, @body) => done error
 
@@ -133,7 +133,7 @@ describe 'MeshbluRpcController', ->
           json:
             fromUuid: 'someone-who-cant-actionYo'
             metadata:
-              action: 'checkTemp'
+              jobType: 'checkTemp'
 
         request.post options, (error, @response, @body) => done error
 
@@ -151,7 +151,7 @@ describe 'MeshbluRpcController', ->
           json:
             fromUuid: 'receiver-uuid'
             metadata:
-              action: 'spendMoney'
+              jobType: 'spendMoney'
 
         request.post options, (error, @response, @body) => done error
 
